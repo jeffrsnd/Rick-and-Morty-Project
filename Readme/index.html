@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap" rel="stylesheet">
+     <title>Rick and Morty Project</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;    
+        }
+                
+        body{
+            background-color: #24282F;
+            font-family: Poppins, "Arial", "sans-serif";
+        }
+        .main-title{
+            font-size: 72px;
+            font-weight: bold;
+            color: #ffff;
+            text-align: center;
+        }
+        #cards-container{
+            display: flex;
+            justify-content: space-evenly;
+            gap: 3.5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;    
+        }
+        .card{
+            background-color: #3C3E44;
+            border-radius: 15px;
+            display: flex;
+            width: 566px;
+        
+        }    
+        .card-img > img{
+            border-bottom-left-radius:15px ;
+            border-top-left-radius: 15px;
+            display: flex;   
+        }
+        .card-text{
+            flex: 1;    
+        }
+        .card-title{
+            font-size: 36px;
+            color: #ffff;
+            padding: 1rem;
+        }
+        .card-descriptions{
+            position: absolute;
+            transform: translateY(50%);
+            color: #ffff ;
+        }    
+        .description{
+            color:#ffff ;
+        }
+        .description >:first-child{
+            color:#767676;
+
+        }
+       
+
+        }
+       
+    </style>
+</head>
+<body>
+    <h1 class="main-title">Rick and Morty Project</h1>
+
+<div id="cards-container"></div>
+ 
+    <script>
+        document.addEventListener("DOMContentLoaded", async function(){
+            const result = await fetch ("https://rickandmortyapi.com/api/character")
+            const data = await result.json()
+            const characters = data.results
+            for(const character of characters){
+            console.log('character.name', character.name)
+
+            const cardsContainer = document.getElementById("cards-container")
+            const card = document.createElement('div')
+            card.className = "card"
+            cardsContainer.appendChild(card)
+
+            const cardImg = document.createElement('div')
+            cardImg.className = "card-img"
+            card.appendChild(cardImg)
+
+            const img = document.createElement("img")
+            img.src = character.image
+            cardImg.appendChild(img)
+
+            const cardTexts = document.createElement("div")
+            cardTexts.className = "card-texts"
+            card.appendChild(cardTexts)
+
+            const cardTitle = document.createElement("div")
+            cardTitle.className = "card-title"
+            cardTexts.appendChild(cardTitle)
+
+            const h4 = document.createElement("h4")
+            h4.innerHTML = character.name
+            cardTitle.appendChild(h4)
+
+            const cardDescriptions = document.createElement ("div")
+            cardDescriptions.className = "card-descriptions"
+            cardTexts.appendChild(cardDescriptions)
+            
+            const description1 = document.createElement("div")
+            description1.className = "description"
+            cardDescriptions.appendChild(description1)
+
+            const description2 = document.createElement ("div")
+            description2.className = "description"
+            cardDescriptions.appendChild(description2)
+
+            const spanGender = document.createElement("span")
+            spanGender.innerHTML = "Gender: "
+            description1.appendChild(spanGender)
+
+            const spanGenderLabel = document.createElement("span")
+            spanGenderLabel.innerHTML = character.gender
+            description1.appendChild(spanGenderLabel)
+
+            const spanEspecies = document.createElement ("span")
+            spanEspecies.innerHTML = "Especies: "
+            description2.appendChild (spanEspecies)
+
+            const spanEspeciesLabel = document.createElement("span")
+            spanEspeciesLabel.innerHTML = "Human"
+            description2.appendChild (spanEspeciesLabel)
+
+            
+        }
+        })
+    </script>
+</body>
+</html>
+
+    
+        
