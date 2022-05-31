@@ -1,1 +1,1 @@
-Esse é o meu primeiro projeto utilizando HTML5, CSS e JavaScript. Onde o objetivo era consumir uma API externa e construir o site usando essas tecnologias para praticar e inicar os primeiros passos como Front-End. Ainda não está finalizado, pois ainda encontro dificuldades para implantar uma barra de busca e um botão para poder pesquisar os personagens.
+Esse é o meu primeiro projeto utilizando HTML5, CSS e JavaScript. Onde o objetivo era consumir uma API externa e construir o site usando essas tecnologias para praticar e inicar os primeiros passos como Front-End. 
